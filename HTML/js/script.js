@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Kiểm tra đáp án
     submitButton.addEventListener("click", function () {
-        const correctAnswer = "CHPBDXUAAN"; // Thay đổi mật khẩu ở đây
+        const correctAnswer = "HPBD XUÂN"; // Thay đổi mật khẩu ở đây
         if (answerInput.value.trim().toUpperCase() === correctAnswer) {
             Swal.fire({
                 title: '🎉 Chính xác!',
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
          else {
             Swal.fire({
                 title: 'Nuh-uh~ 😢',
-                text: 'Sai mất rồi, thử lại lần nữa nhé!',
                 text: 'Thử dấu cách và viết dấu xem?',
                 icon: 'error',
                 confirmButtonText: 'OK nè 💪',
