@@ -124,4 +124,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     updateSlide(); // Cập nhật slide ban đầu
+    const goToTextBtn = document.getElementById("go-to-text-wishes");
+    const textWishesPage = document.getElementById("text-wishes");
+
+    goToTextBtn.addEventListener("click", () => {
+        wishesPage.classList.add("fade-out");
+        setTimeout(() => {
+            wishesPage.classList.add("hidden");
+            textWishesPage.classList.remove("hidden");
+            textWishesPage.classList.add("fade-in");
+        }, 600);
+    });
 });
