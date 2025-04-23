@@ -96,7 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "Image/Chúc/IMG_1745395066610_1745425491431.jpg",
         "Image/Chúc/Messenger_creation_D11AC6BE-B767-452F-A99E-BB1490AC7135.jpg",
         "Image/Chúc/Messenger_creation_FCA61D2E-91B2-4F3E-8418-41CD079FA9D0.jpg",
-        "Image/Chúc/Thiệp chúc mừng sinh nhật Xuân.png"
+        "Image/Chúc/Thiệp chúc mừng sinh nhật Xuân.png",
+        "Image/Chúc/CMSN_Xuan.png"
     ];
 
     let currentSlide = 0;
