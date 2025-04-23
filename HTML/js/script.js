@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
 
     // Kiểm tra đáp án
-    submitButton.addEventListener("click", function () {
+    // Cho phép nhấn Enter để gửi
+    function checkAnswer() {
         const correctAnswer = "HPBD XUÂN";
         if (answerInput.value.trim().toUpperCase() === correctAnswer) {
             Swal.fire({
@@ -45,8 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 color: '#00695c',
                 timerProgressBar: true
             });
-
-            // Bật hiệu ứng hoa giấy 🎊
+    
             setTimeout(() => {
                 confetti({
                     particleCount: 150,
@@ -54,8 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     origin: { y: 0.6 }
                 });
             }, 500);
-
-            // Chuyển trang quà ngay lập tức sau khi hiệu ứng hoàn tất
+    
             setTimeout(() => {
                 codePage.classList.add("fade-out");
                 setTimeout(() => {
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     wishesPage.classList.remove("hidden");
                     wishesPage.classList.add("fade-in");
                 }, 600);
-            }, 4000); // Chuyển trang sau 4s, đảm bảo nó chỉ mở sau khi có hiệu ứng quà
+            }, 4000);
         } else {
             Swal.fire({
                 title: 'Nuh-uh~ 😢',
@@ -81,8 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         }
-    });
+    }
+    submitButton.addEventListener("click", checkAnswer);
 
+    answerInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
+        
     // --- Slideshow logic ---
     const slideImages = [
         "Image/Chúc/IMG_20250423_000927.jpg",
