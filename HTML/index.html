@@ -8,9 +8,6 @@
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
-
 </head>
 <body>
     <div id="birthday-cake" class="container">
@@ -28,16 +25,15 @@
     <div id="birthday-wishes" class="container hidden">
         <h1>Chúc Mừng Sinh Nhật!</h1>
         <div class="slideshow">
-            <button id="prev-btn">⏮️</button>
-    
             <div class="slide-frame">
-                <a id="download-link" download>
-                    <button class="download-btn">⬇️</button>
-                </a>
                 <img id="slide-image" src="Image/Chúc/wish1.jpg" alt="Lời chúc sinh nhật">
             </div>
-    
-            <button id="next-btn">⏭️</button>
+
+            <div class="buttons">
+                <button id="prev-btn">Trước</button>
+                <button id="download-btn">Tải ảnh</button>
+                <button id="next-btn">Sau</button>
+            </div>
         </div>
     </div>    
 
