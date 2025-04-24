@@ -29,7 +29,7 @@ h1 {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .code-image,
@@ -152,4 +152,83 @@ button:hover {
     top: -10px;
     right: -10px;
     font-size: 24px;
+}
+
+#special-gift {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000;
+    animation: shake 1s infinite;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Profile full-screen overlay */
+.profile-container {
+    /* Không cần display:none ở đây – JS sẽ gỡ .hidden */
+    justify-content: center;
+    align-items: center;
+    position: fixed;               /* Full-screen overlay */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Nền mờ */
+    z-index: 1500;
+
+    /* Khi .hidden bị gỡ (JS remove .hidden), mặc định display:flex */
+    display: flex !important;
+}
+
+/* Ẩn mặc định thông qua .hidden */
+.profile-container.hidden {
+    display: none !important;
+}
+
+/* Nếu muốn ảnh phủ trọn hoàn toàn */
+#profile-img.fullscreen {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain; /* Giữ tỉ lệ hình */
+}
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
 }
