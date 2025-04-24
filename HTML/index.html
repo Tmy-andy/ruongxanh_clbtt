@@ -26,7 +26,7 @@
         <h1>Chúc Mừng Sinh Nhật!</h1>
         <div class="slideshow">
             <div class="slide-frame">
-                <img id="slide-image" src="Image/Chúc/wish1.jpg" alt="Lời chúc sinh nhật">
+                <img id="slide-image" src="Image/Chúc/IMG_20250423_000927.jpg" alt="Lời chúc sinh nhật">
             </div>
 
             <div class="buttons">
@@ -75,13 +75,36 @@
     </div>
 
     <!-- POPUP ẨN -->
-    <div id="popup" class="popup hidden">
+       <div id="popup" class="popup hidden">
         <div class="popup-content">
             <span id="close-popup" class="close-btn">✖</span>
             <img src="Image/special-gift.jpg" id="popup-img" style="max-width: 90%;">
             <br>
             <button id="download-all">Tải cả hai ảnh</button>
         </div>
+    </div>
+
+    <!-- Popup cuối cùng sau tải cả hai ảnh -->
+    <div id="final-popup" class="popup hidden">
+        <div class="popup-content">
+            <p style="font-size:1.2em; font-weight:bold; margin-bottom:20px;">
+                Ohhhh! Còn 1 món cuối dành cho bạn này („ಡ ω ಡ„)
+            </p>
+            
+                <button id="view-final" style="margin:0 10px; padding:10px 20px;">Xem thôi~</button>
+            <br><br>
+            
+                <button id="force-view" style="margin:0 10px; padding:10px 20px;">Không? Buộc xem!</button>
+            
+        </div>
+    </div>
+    
+
+    <!-- Trang cuối show ảnh full-screen -->
+    <div id="last-page " class="hidden">
+        <img src="Image/DT.jpg"
+            alt="Món quà cuối"
+            style="width:100vw; height:100vh; object-fit:contain;" />
     </div>
 
     <script src="js/script.js"></script>

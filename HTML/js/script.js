@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         Swal.fire({
           title: 'Nuh-uh~ Sai rồi😢',
-          html: `<p>Tip: Thử dấu cách và viết dấu xem? Nhớ CAPSLOCK nha!</p>
+          html: `<p>Thử lại xem</p>
                  <img src="https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif"
                       alt="sad cat" style="width:100%;max-width:250px;
                       margin-top:12px;border-radius:8px;"/>`,
@@ -104,42 +104,86 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // 4) Activate Text Wishes → Special Gift & Popup
     function activateGiftScroll() {
-      // ensure hidden at start
-      specialGift.classList.add("hidden");
+        // ensure hidden at start
+        specialGift.classList.add("hidden");
+        popup.classList.add("hidden");
+        profileContainer.classList.add("hidden");
+    
+        textWishes.addEventListener("scroll", () => {
+          if (textWishes.scrollTop + textWishes.clientHeight >= textWishes.scrollHeight - 50) {
+            specialGift.classList.remove("hidden");
+          }
+        });
+    
+        specialGift.addEventListener("click", () => {
+          specialGift.classList.add("hidden");
+          // Ẩn luôn phần text-wishes
+          fadeOut(textWishes);
+          // Hiện ảnh profile
+          profileContainer.classList.remove("hidden");
+          document.getElementById("chest-sound")?.play();
+        });
+    
+        profileImg.addEventListener("click", () => {
+          popup.classList.remove("hidden");
+        });
+        closePopup.addEventListener("click", () => {
+          popup.classList.add("hidden");
+        });
+      }
+    
+      // Event bindings
+      submitButton?.addEventListener("click", checkAnswer);
+      answerInput?.addEventListener("keydown", e => { if (e.key === "Enter") checkAnswer(); });
+      goToTextBtn?.addEventListener("click", () => {
+        fadeOut(wishesPage, () => fadeIn(textWishes));
+        activateGiftScroll();
+      });
+    
+  
+      // --- Popup cuối và chuyển trang cuối ---
+      const downloadAllBtn = document.getElementById("download-all");
+      const finalPopup    = document.getElementById("final-popup");
+      const viewFinalBtn  = document.getElementById("view-final");
+      const forceViewBtn  = document.getElementById("force-view");
+      const lastPage      = document.getElementById("last-page");
+  
+      downloadAllBtn?.addEventListener("click", () => {
+          // URL của hai ảnh cần tải
+          const urls = [
+            "Image/profile.jpg",
+            "Image/special-gift.jpg"
+          ];
+        
+          urls.forEach((url) => {
+            const a = document.createElement("a");
+            a.href = url;
+            // Đặt tên file tương ứng:
+            a.download = url.split("/").pop();
+            document.body.append(a);
+            a.click();
+            a.remove();
+          });
+        
+          // Sau đó hiện popup cuối
+          finalPopup.classList.remove("hidden");
+        });      
+  
+      function goToLastPage() {
+      // Ẩn tất cả màn hình trước
+      finalPopup.classList.add("hidden");
       popup.classList.add("hidden");
       profileContainer.classList.add("hidden");
+      textWishes.classList.add("hidden");
+      wishesPage.classList.add("hidden");
+      // Hiện trang cuối
+      lastPage.classList.remove("hidden");
+      }
   
-      textWishes.addEventListener("scroll", () => {
-        if (textWishes.scrollTop + textWishes.clientHeight >= textWishes.scrollHeight - 50) {
-          specialGift.classList.remove("hidden");
-        }
-      });
-  
-      specialGift.addEventListener("click", () => {
-        specialGift.classList.add("hidden");
-        // Ẩn luôn phần text-wishes
-        fadeOut(textWishes);
-        // Hiện ảnh profile
-        profileContainer.classList.remove("hidden");
-        document.getElementById("chest-sound")?.play();
-      });
-  
-      profileImg.addEventListener("click", () => {
-        popup.classList.remove("hidden");
-      });
-      closePopup.addEventListener("click", () => {
-        popup.classList.add("hidden");
-      });
-    }
-  
-    // Event bindings
-    submitButton?.addEventListener("click", checkAnswer);
-    answerInput?.addEventListener("keydown", e => { if (e.key === "Enter") checkAnswer(); });
-    goToTextBtn?.addEventListener("click", () => {
-      fadeOut(wishesPage, () => fadeIn(textWishes));
-      activateGiftScroll();
-    });
-  
+      // Cả hai nút đều dẫn tới trang cuối
+      viewFinalBtn?.addEventListener("click", goToLastPage);
+      forceViewBtn?.addEventListener("click", goToLastPage);
+      
     // Kick off
     showCakeThenCode();
     initSlideshow();
