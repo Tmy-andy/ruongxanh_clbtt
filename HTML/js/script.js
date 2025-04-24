@@ -111,11 +111,12 @@ document.addEventListener("DOMContentLoaded", () => {
         profileContainer.classList.add("hidden");
     
         textWishes.addEventListener("scroll", () => {
-          if (textWishes.scrollTop + textWishes.clientHeight >= textWishes.scrollHeight - 50) {
-            specialGift.classList.remove("hidden");
-          }
+            if (textWishes.scrollTop + textWishes.clientHeight >= textWishes.scrollHeight - 50) {
+                setTimeout(() => {
+                    specialGift.classList.remove("hidden");
+                }, 4000);
+            }
         });
-    
         specialGift.addEventListener("click", () => {
           specialGift.classList.add("hidden");
           // Ẩn luôn phần text-wishes
