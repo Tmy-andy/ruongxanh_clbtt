@@ -85,7 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "Image/Chúc/Messenger_creation_FCA61D2E-91B2-4F3E-8418-41CD079FA9D0.jpg",
         "Image/Chúc/Thiệp chúc mừng sinh nhật Xuân.png",
         "Image/Chúc/CMSN_Xuan.png",
-        "Image/Chúc/99dbacac-d19b-4870-ba34-3bb10ad8add0.jpg"
+        "Image/Chúc/99dbacac-d19b-4870-ba34-3bb10ad8add0.jpg",
+        "Image/DT.jpg"
     ];
 
     let idx = 0;
@@ -143,10 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
       // --- Popup cuối và chuyển trang cuối ---
       const downloadAllBtn = document.getElementById("download-all");
-      const finalPopup    = document.getElementById("final-popup");
-      const viewFinalBtn  = document.getElementById("view-final");
-      const forceViewBtn  = document.getElementById("force-view");
-      const lastPage = document.getElementById("last-page");
   
       downloadAllBtn?.addEventListener("click", () => {
           // URL của hai ảnh cần tải
@@ -165,25 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
             a.remove();
           });
         
-          // Sau đó hiện popup cuối
-          finalPopup.classList.remove("hidden");
+          
         });      
-  
-      function goToLastPage() {
-      // Ẩn tất cả màn hình trước
-      finalPopup.classList.add("hidden");
-      popup.classList.add("hidden");
-      profileContainer.classList.add("hidden");
-      textWishes.classList.add("hidden");
-      wishesPage.classList.add("hidden");
-      // Hiện trang cuối
-      lastPage.classList.remove("hidden");
-      }
-  
-      // Cả hai nút đều dẫn tới trang cuối
-      viewFinalBtn?.addEventListener("click", goToLastPage);
-      forceViewBtn?.addEventListener("click", goToLastPage);
-  
     // Kick off
     showCakeThenCode();
     initSlideshow();
